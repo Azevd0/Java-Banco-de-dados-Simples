@@ -62,9 +62,8 @@ public class LivroDAO {
 		Livro livro = em.find(Livro.class, id);
 		if (livro != null) {
 		    em.remove(livro);
-		    System.out.println("Livro removido com sucesso");
 		} else {
-			System.out.println("Não encontrado para remoção");
+			return false;
 		}
 		em.getTransaction().commit();
 		em.close();
@@ -87,4 +86,5 @@ public class LivroDAO {
 	
 	
 	
+
 
