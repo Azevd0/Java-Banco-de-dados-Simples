@@ -87,7 +87,22 @@ public class LivroService {
         System.out.print("Digite o ID do livro que deseja remover: ");
         int id = scan.nextInt();
         scan.nextLine();
- 		livrodao.deleteLivro(id);
+ 		boolean deletado = livrodao.deleteLivro(id);
+ 		if(deletado) {
+ 			System.out.println("Livro deletado com sucesso");
+ 			System.out.println("Livros Restantes:");
+ 			List<Livro> lista = livrodao.findAll();
+				for (Livro l : lista) {
+					System.out.println("Id: "+ l.getId());
+					System.out.println("Título: "+ l.getTitulo() );
+					System.out.println("Autor: "+ l.getAutor());
+					System.out.println("Lançamento: "+ l.getLançamento());
+					System.out.println("-----------------------");
+				}	
+ 		} else {
+ 			System.out.println("Livro não encontrado para remoção");
+ 		}
+
 	}
 
 	public void updateLivro() {
@@ -131,6 +146,7 @@ public class LivroService {
 		System.out.println("Livro atualizado com sucesso");
 	}
 }
+
 
 
 
