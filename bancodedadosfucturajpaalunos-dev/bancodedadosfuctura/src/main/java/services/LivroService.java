@@ -44,6 +44,25 @@ public class LivroService {
 			}
 		}
 	}
+	public void listAutor() {
+		System.out.println("Qual autor você procura?");
+		String aut = scan.nextLine().trim();
+		
+		List<Livro> autorLiv = livrodao.findByAutor(aut);
+		if(autorLiv.isEmpty()) {
+			System.out.println("Autor não encontrado");
+		} else {
+			for(int x = 0; x < autorLiv.size();x++) {
+				System.out.printf("%dº Livro\n", x+1);
+				System.out.println("Id: "+ autorLiv.get(x).getId());
+				System.out.println("Título: " + autorLiv.get(x).getTitulo());
+				System.out.println("Autor: "+ autorLiv.get(x).getAutor());
+				System.out.println("Lançamento: " + autorLiv.get(x).getLançamento());
+				System.out.println("-----------------------");
+
+			}
+		}
+	}
 
 	public Livro procurarLivro() {
 		System.out.println("Qual o Id do livro que você quer?");
@@ -69,9 +88,7 @@ public class LivroService {
         int id = scan.nextInt();
         scan.nextLine();
  		livrodao.deleteLivro(id);
- 		System.out.println("Livro deletado com sucesso!");
- 		scan.nextLine();
-		}
+	}
 
 	public void updateLivro() {
 		System.out.print("Digite o ID do livro que deseja Atualizar: ");
@@ -114,6 +131,7 @@ public class LivroService {
 		System.out.println("Livro atualizado com sucesso");
 	}
 }
+
 
 
 
